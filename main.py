@@ -12,11 +12,13 @@ def courbe(norme_vitesse, angle, hauteur, g=9.81, detaille=100):
 
     t = 0
 
+    #Optimisation : on prépare des valeurs pour ne pas les re-calculer
     v0cos_a = norme_vitesse * cos(angle)
     v0sin_a = norme_vitesse * sin(angle)
 
     demi_g = g / 2
 
+    #Chaque tour de boucle correspond à un temps delta_t de la position en X et Y
     while y[t] >= 0:
         t += 1
         detaille_t = t/detaille
@@ -25,6 +27,7 @@ def courbe(norme_vitesse, angle, hauteur, g=9.81, detaille=100):
 
     t -= 1
 
+    #Trace la courbe et ajoute sa légende
     plt.plot(x, y, label=
                         """v0 = """ + str(norme_vitesse) +
                         """ m.s\nα = """ + str(angle) +
@@ -72,6 +75,7 @@ def interface():
 
         stdout.write("\n")
 
+    #On place les points de départs de chaque courbe en bleu
     plt.scatter([0] * len(y_t0), list(y_t0), color='blue', label="t = 0")
 
     plt.ylabel("Y(t)")
