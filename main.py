@@ -38,6 +38,7 @@ def courbe(norme_vitesse, angle, hauteur, g=9.81, detaille=100):
 
 def get_param(parametre, defaut=None):
     stdout.write(parametre)
+    stdout.flush()
 
     if defaut == None:
         return float(stdin.readline())
@@ -45,7 +46,7 @@ def get_param(parametre, defaut=None):
     reponse = stdin.readline()
     if reponse == "\n":
         return defaut
-    
+
     return float(reponse)
 
 def interface():
